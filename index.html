@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>animation</title>
+    <style>
+        html {
+            height: 100%;
+        }
+        body{
+            position: relative;
+            margin: 0px;
+            /* background-image: url('fish.png');
+            background-repeat: no-repeat;
+            background-size: 100%; */
+            background-image: linear-gradient(to bottom, pink , skyblue);
+            height: 100%;
+        }
+        #pot{
+            position: absolute;
+            left: 80px;
+            bottom: 80px;
+            height: 500px;
+        }
+        #but{
+            z-index: -1;
+            position: absolute;
+            left: 250px;
+            bottom: 250px;
+            height: 90px;
+            animation: moveAnim 3.5s infinite alternate;
+            animation-play-state: paused;
+        }
+        #leaf{
+            position: absolute;
+            width: 50px;
+            right: 200px;
+            animation:  fall 3.5s infinite /*alternate*/;
+
+        }
+        #leaf1{
+            position: absolute;
+            width: 30px;
+            right: 350px;
+            animation:  fall 2.5s infinite /*alternate*/;
+        }
+        #leaf2{
+            position: absolute;
+            width: 40px;
+            right: 500px;
+            animation:  fall 3s infinite
+        }
+        #leaf3{
+            position: absolute;
+            width: 65px;
+            right: 700px;
+            animation:  fall 2.5s infinite
+        }
+        #leaf4{
+            position: absolute;
+            width: 40px;
+            right: 850px;
+            animation:  fall 3.5s infinite
+        }
+        #leaf5{
+            position: absolute;
+            width: 45px;
+            right: 1000px;
+            animation:  fall 2s infinite
+        }
+		@keyframes moveAnim{
+            0%{
+                transform: scale(0.8, 0.8);
+                transform: translate3D(0, 0, 0);
+            }
+            50%{
+                transform: translate3D(300px, -300px, 0);
+            }
+			100%{
+                transform: scale(1.2, 1.2);
+            }
+		}
+        @keyframes fall{
+            from{
+                margin-top: 30px;
+            }
+            to{
+                margin-top: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <audio src="Spring.mp3" id="bubAudio"></audio>
+    
+    <img src="but.png" id="but">
+    <img src="pot.png" id="pot">
+    <img src="leaf.png" id="leaf">
+    <img src="leaf.png" id="leaf1">
+    <img src="leaf.png" id="leaf2">
+    <img src="leaf.png" id="leaf3">
+    <img src="leaf.png" id="leaf4">
+    <img src="leaf.png" id="leaf5">
+
+
+    <script>
+        // 지금 움직이고 있냐
+        var isMove = false;
+        pot.onclick = function(){
+            // isMove가 true면 (즉, 움직이고 있으면)
+            if(isMove == true){
+                // 멈춰준다
+                isMove = false
+                bubAudio.pause()
+                bubAudio.currentTime = 0;
+                but.style.animationPlayState = 'paused'
+            }else{
+                // 움직이게 해준다
+                isMove = true
+                bubAudio.play()
+                but.style.animationPlayState = 'running'
+            }
+        }
+    </script>
+</body>
+</html>
